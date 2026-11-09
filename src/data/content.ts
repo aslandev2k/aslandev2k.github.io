@@ -2,7 +2,41 @@
 
 export type ExternalLink = { label: string; href: string }
 
-export type ProjectVisual = 'board' | 'contract'
+export type ProjectVisual = 'board' | 'contract' | 'local'
+
+export type TreeBranch = { name: string; detail: string }
+
+export type Tree = {
+  caption: string
+  root: string
+  rootNote: string
+  branches: TreeBranch[]
+  footnote: string
+}
+
+export const contractTree: Tree = {
+  caption: 'One API definition, three consumers',
+  root: 'contract',
+  rootNote: 'ts-rest + Zod',
+  branches: [
+    { name: 'client', detail: 'ReactJS compiles against it' },
+    { name: 'routes', detail: 'ExpressJS compiles against it' },
+    { name: 'docs', detail: 'OpenAPI generated from it' },
+  ],
+  footnote: 'Change the contract once, and the compiler points at everything that must follow.',
+}
+
+export const localDataTree: Tree = {
+  caption: 'Where your data lives',
+  root: 'your mac',
+  rootNote: 'no account',
+  branches: [
+    { name: 'tasks', detail: 'epics, tasks and rich notes' },
+    { name: 'sessions', detail: 'every focus session and break' },
+    { name: 'backups', detail: 'made before each update' },
+  ],
+  footnote: 'Deepkoi connects to the internet only when you click Check for Updates.',
+}
 
 export type Stat = { value: string; label: string }
 
@@ -89,6 +123,29 @@ export const featuredProjects: Project[] = [
       { label: 'AssetLoom', href: 'https://assetloom.com/' },
     ],
     visual: 'contract',
+  },
+  {
+    slug: 'deepkoi',
+    name: 'Deepkoi',
+    kind: 'Personal project, macOS app',
+    summary:
+      'A focus tracker for the Mac: start a session on one task in a click, and see where your time really goes.',
+    stat: 'Three public releases in the first eight days.',
+    lines: [
+      'Built the whole app alone, from the SwiftUI screens to the data layer.',
+      'Kept every task and session on the Mac, with no account.',
+      'Shipped signed in-app updates that back up user data before installing.',
+      'Covered the app with more than 400 automated tests.',
+    ],
+    stack: ['Swift', 'SwiftUI', 'SwiftData', 'Sparkle', 'Swift Testing'],
+    links: [
+      {
+        label: 'Download for macOS',
+        href: 'https://github.com/aslandev2k/deepkoi-home/releases/latest',
+      },
+      { label: 'Project page', href: 'https://github.com/aslandev2k/deepkoi-home' },
+    ],
+    visual: 'local',
   },
 ]
 
@@ -211,6 +268,7 @@ export const skillGroups: { name: string; items: string[] }[] = [
       'Jira REST API',
     ],
   },
+  { name: 'Native macOS', items: ['Swift', 'SwiftUI', 'SwiftData'] },
   {
     name: 'AI-assisted engineering',
     items: ['Claude Code', 'Custom commands', 'Reusable skills', 'Test-first with AI'],

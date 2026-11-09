@@ -1,17 +1,20 @@
 import {
   compactProject,
+  contractTree,
   featuredProjects,
+  localDataTree,
   type Project,
   type ProjectVisual,
   publicSectorProjects,
 } from '../data/content.ts'
 import { BoardDemo } from './BoardDemo.tsx'
-import { ContractTree } from './ContractTree.tsx'
 import { SectionHeading } from './SectionHeading.tsx'
+import { TreeFigure } from './TreeFigure.tsx'
 
 const visuals: Record<ProjectVisual, () => React.JSX.Element> = {
   board: BoardDemo,
-  contract: ContractTree,
+  contract: () => <TreeFigure tree={contractTree} />,
+  local: () => <TreeFigure tree={localDataTree} />,
 }
 
 function ProjectBody({ project }: { project: Project }) {
