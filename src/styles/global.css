@@ -668,7 +668,7 @@ button {
 
 .tree li {
   display: grid;
-  grid-template-columns: 28px 72px minmax(0, 1fr);
+  grid-template-columns: 28px 88px minmax(0, 1fr);
   padding: 7px 0;
   line-height: 1.35;
 }
