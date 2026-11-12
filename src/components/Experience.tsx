@@ -5,8 +5,8 @@ export function Experience() {
     <section className="chapter" id="experience" data-figure="page">
       <div className="panel">
         <p className="chapter-meta">
-          <span className="chapter-index">CV</span>
-          <span>Where the work happened</span>
+          <span className="chapter-index">{experience.length}</span>
+          <span>Companies, Oct 2021 to Sep 2026</span>
         </p>
         <h2>Experience</h2>
         <ol className="roles">

@@ -95,9 +95,10 @@ export function BoardDemo() {
   return (
     <figure className="board">
       <figcaption className="board-header">
-        <span>Live demo: scroll sideways, click a card</span>
+        <span>Try it: scroll sideways, click a card to move it</span>
         <span className="board-count">
-          <strong>{cardsInDom}</strong> of {TOTAL_CARDS.toLocaleString('en-US')} cards in the DOM
+          <strong>{cardsInDom}</strong> of {TOTAL_CARDS.toLocaleString('en-US')} cards drawn right
+          now
         </span>
       </figcaption>
       <div className="board-viewport" ref={viewportRef} onScroll={handleScroll}>
@@ -147,11 +148,14 @@ export function BoardDemo() {
             checked={failNextSave}
             onChange={(event) => setFailNextSave(event.currentTarget.checked)}
           />
-          Fail the next save
+          Make the next save fail
         </label>
         <output className="board-message">{message}</output>
       </div>
-      <p className="board-note">Written for this site to show two techniques used in Product Go.</p>
+      <p className="board-note">
+        A small copy written for this site. It shows two techniques from Product Go: draw only the
+        cards on screen, and show a move before its save finishes.
+      </p>
     </figure>
   )
 }

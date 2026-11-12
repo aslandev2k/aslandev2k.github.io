@@ -6,7 +6,7 @@ export function Skills() {
       <div className="panel">
         <p className="chapter-meta">
           <span className="chapter-index">{skillGroups.length}</span>
-          <span>Groups of tools, from real projects</span>
+          <span>Groups of tools, by layer</span>
         </p>
         <h2>Skills</h2>
         <dl className="skills">

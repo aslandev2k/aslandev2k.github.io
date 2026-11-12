@@ -8,9 +8,9 @@ export const figureKeys = [
   'globe',
   'board',
   'hub',
-  'koi',
   'schedule',
   'tiers',
+  'koi',
   'wireframe',
   'page',
   'spiral',
@@ -48,6 +48,7 @@ export function formatCount(value: number): string {
 export const dotCount: number = marketplace.productGo.installs
 
 const productGoInstalls = formatCount(marketplace.productGo.installs)
+const productGoRating = `${marketplace.productGo.rating} out of 5 across ${marketplace.productGo.reviews} public reviews`
 
 export const profile = {
   firstLine: 'Nguyen',
@@ -55,15 +56,16 @@ export const profile = {
   name: 'Nguyen Tien Dat',
   role: 'Software Engineer',
   location: 'Ho Chi Minh City, Vietnam',
-  status: 'Open to new roles',
+  status: 'Open to full-stack and frontend roles',
   positioning:
-    'Builds the ReactJS screens and NodeJS services behind B2B web products: a Jira add-on installed by more than 1,900 organizations, and the sign-in and billing platform behind two SaaS products.',
+    'Full-stack engineer with 4+ years on B2B web products in ReactJS, NodeJS and TypeScript. Took over Product Go, a Jira add-on installed by more than 1,900 organizations, and owned its frontend and backend. Then wrote the sign-in and billing platform behind two SaaS products, alone.',
   dotNote: `${productGoInstalls} dots. One for every organization that has Product Go installed. Scroll, and the same dots draw the rest of the story.`,
   facts: [
-    '4+ years building B2B web products',
-    'Second Prize, ICPC Asia Regional',
-    'Daily Claude Code user since January 2026',
+    `Product Go: rated ${marketplace.productGo.rating} out of 5 in ${marketplace.productGo.reviews} public reviews`,
+    'Second Prize, ICPC Asia Regional programming contest',
+    'Works with Claude Code daily, writing the test first',
   ],
+  contactNote: 'Hiring for a full-stack or frontend role? Email is the fastest way to reach me.',
   email: 'aslandev2k@gmail.com',
   github: 'https://github.com/aslandev2k',
   repository: 'https://github.com/aslandev2k/aslandev2k.github.io',
@@ -81,12 +83,12 @@ export const figureCaptions: Record<FigureKey, string> = {
   globe: `${productGoInstalls} organizations, counted on the Atlassian Marketplace on ${marketplace.checkedOn}.`,
   board:
     'The same dots as a story map. Only the cards inside the frame are drawn at full strength, the way the real board renders only what is on screen.',
-  hub: 'A product hands sign-in and payment to the core. The core pushes each new account and plan change back as an event.',
-  koi: 'The same dots, swimming.',
+  hub: 'TaskFord and AssetLoom hand sign-in and payment to the platform. The platform sends each new account and plan change back as an event.',
   schedule: 'A week of classes, one block per time slot.',
   tiers: 'One application, climbing from a local unit to the provincial council.',
+  koi: 'The same dots, swimming.',
   wireframe: 'A wireframe and a flowchart, the two things Mocky draws.',
-  page: 'The same dots as one page. This site is the longer version.',
+  page: 'The same dots as a one-page resume.',
   spiral: 'Eight arms, one for each group of skills.',
   medals: 'Five results, from high school to ICPC.',
   envelope: 'One email away.',
@@ -114,16 +116,17 @@ export const projects: Project[] = [
     figure: 'board',
     name: 'Product Go',
     kind: 'Jira add-on',
-    context: 'DevSamurai, 2022 to 2024',
+    context: 'DevSamurai, Jan 2022 to Dec 2024',
     summary:
-      'Turns a Jira backlog into a story map, so a product team sees a whole release at once.',
-    stat: `Installed by ${productGoInstalls} organizations. Rated ${marketplace.productGo.rating} out of 5 across ${marketplace.productGo.reviews} reviews.`,
+      'A planning add-on for Jira, sold worldwide on the Atlassian Marketplace. It turns a backlog into a story map, so a product team sees a whole release at once instead of reading down a list of tickets.',
+    stat: `Installed by ${productGoInstalls} organizations. Rated ${productGoRating}.`,
     lines: [
-      'Took over the ReactJS screens and NodeJS service after six months, then owned both for three years.',
-      'Kept boards of 500 to 1,000 cards smooth by rendering only the cards on screen.',
-      'Made card moves appear at once while the save runs in the background, with rollback if it fails.',
-      'Reworked how the app loads Jira data, so a large board opens in a few seconds instead of up to a minute.',
-      'Built the screens that break a large goal into smaller tasks with AI.',
+      'Joined an existing product and took over both sides after six months: the ReactJS screens and the NodeJS service.',
+      'Shipped new features and fixed the bugs that testers and customers reported.',
+      'Cut the time to open a large board from up to a minute to a few seconds, by reworking how the app loads Jira data.',
+      'Kept boards of 500 to 1,000 cards smooth to scroll and drag, by rendering only the cards on screen.',
+      'Made a card move show instantly: the screen updates first, the save follows, and a failed save rolls the card back.',
+      'Built the screens where AI breaks a large goal into smaller tasks, without leaving the board.',
     ],
     stack: ['ReactJS', 'Redux', 'NodeJS', 'ExpressJS', 'PostgreSQL', 'Jira REST API'],
     links: [{ label: 'Atlassian Marketplace', href: marketplace.productGo.href }],
@@ -133,15 +136,17 @@ export const projects: Project[] = [
     slug: 'account-platform',
     figure: 'hub',
     name: 'Sign-in and billing platform',
-    kind: 'Shared SaaS platform',
-    context: 'DevSamurai, 2025 to 2026',
-    summary: 'Decides who a customer is and what they pay for, across TaskFord and AssetLoom.',
+    kind: 'Shared platform for two SaaS products',
+    context: 'DevSamurai, Jan 2025 to Apr 2026',
+    summary:
+      'The account platform behind TaskFord (work management) and AssetLoom (IT asset tracking). It decides who a customer is and what they pay for, from sign-in to teammates to the subscription.',
+    stat: 'Both products run on it in production.',
     lines: [
-      'Wrote the whole sign-in and billing side alone, in TypeScript.',
-      'Defined the API once in a shared contract that the client and the server both compile against.',
-      'Let workspace owners invite teammates and give each one a role.',
-      'Built paid plans on Stripe: choose, pay and change a plan later.',
-      'Added Google and Microsoft sign-in and two-factor codes.',
+      'Wrote the whole sign-in and billing side alone: the ReactJS screens, the NodeJS service and the PostgreSQL database.',
+      'Built subscriptions on Stripe: a customer chooses a plan, pays and changes it later. Four plans on TaskFord, seven on AssetLoom.',
+      'Built sign-up, password reset, Google and Microsoft sign-in, and two-factor codes.',
+      'Built team workspaces: an owner invites teammates and gives each a role (owner, admin, billing manager or member).',
+      'Defined the API once, in a contract that the screens and the service both compile against, so the two cannot drift apart.',
     ],
     stack: ['ReactJS', 'NodeJS', 'PostgreSQL', 'Prisma', 'ts-rest', 'Zod', 'Stripe', 'Pub/Sub'],
     links: [
@@ -150,40 +155,16 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'deepkoi',
-    figure: 'koi',
-    name: 'Deepkoi',
-    kind: 'Personal project, macOS app',
-    context: '2026',
-    summary:
-      'A focus tracker for the Mac: start a session on one task in a click, and see where your time really goes.',
-    stat: 'From first commit to three public releases in eight days.',
-    lines: [
-      'Built the whole app alone, from the SwiftUI screens to the data layer.',
-      'Kept every task and session on the Mac, with no account.',
-      'Shipped signed in-app updates that back up user data before installing.',
-      'Covered the app with more than 900 automated tests.',
-    ],
-    stack: ['Swift', 'SwiftUI', 'SwiftData', 'Sparkle', 'Swift Testing'],
-    links: [
-      {
-        label: 'Download for macOS',
-        href: 'https://github.com/aslandev2k/deepkoi-home/releases/latest',
-      },
-      { label: 'Project page', href: 'https://github.com/aslandev2k/deepkoi-home' },
-    ],
-  },
-  {
     slug: 'culture-hub',
     figure: 'schedule',
     name: 'Culture Hub',
-    kind: 'Dong Nai youth culture center',
-    context: 'Donasky, 2026',
+    kind: 'Management system for a youth culture center',
+    context: 'Donasky (freelance), 2026',
     summary:
       'Parents enroll their children and pay the course fee online. Teachers take attendance. Staff run the schedule.',
     lines: [
       'Built the frontend for staff, teachers, students and parents in six weeks, on a team of three.',
-      'Wrote a Claude Code command that regenerates typed API contracts from the Java backend.',
+      'Kept the frontend in sync with the Java API: a Claude Code command reads the backend code and regenerates the typed API definitions.',
       "Live, running on the center's own classes and facilities.",
     ],
     stack: ['ReactJS', 'TanStack', 'Tailwind CSS', 'ts-rest', 'Zod'],
@@ -198,13 +179,13 @@ export const projects: Project[] = [
     slug: 'reward-system',
     figure: 'tiers',
     name: 'Emulation & Reward System',
-    kind: 'Dong Nai provincial youth union',
-    context: 'Donasky, 2026',
+    kind: 'Award review system for a provincial youth union',
+    context: 'Donasky (freelance), 2026',
     summary:
-      'An award application starts at a local unit and moves up four levels of review to the provincial council. It replaces a paper process.',
+      'Replaces a paper process. An award application starts at a local unit and moves up four levels of review to the provincial council, where members vote on it.',
     lines: [
-      'Built the frontend for all six roles in one month, on a team of three.',
-      'Delivered and handed over to the provincial youth union.',
+      'Built the frontend for all six user roles in one month, on a team of three.',
+      'Delivered, handed over to the provincial youth union, and live.',
     ],
     stack: ['ReactJS', 'TanStack', 'Tailwind CSS', 'ts-rest', 'Zod'],
     links: [
@@ -215,16 +196,41 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'deepkoi',
+    figure: 'koi',
+    name: 'Deepkoi',
+    kind: 'Personal project, macOS app',
+    context: '2026',
+    summary:
+      'A focus tracker for the Mac: start a session on one task in a click, and see where your time really goes.',
+    stat: 'From first commit to three public releases in eight days.',
+    lines: [
+      'Built the whole app alone, from the SwiftUI screens to the data layer.',
+      "Kept every task and session on the user's Mac, so the app needs no account.",
+      'Shipped signed in-app updates that back up user data before installing.',
+      'Covered the app with more than 900 automated tests.',
+    ],
+    stack: ['Swift', 'SwiftUI', 'SwiftData', 'Sparkle', 'Swift Testing'],
+    links: [
+      {
+        label: 'Download for macOS',
+        href: 'https://github.com/aslandev2k/deepkoi-home/releases/latest',
+      },
+      { label: 'Project page', href: 'https://github.com/aslandev2k/deepkoi-home' },
+    ],
+  },
+  {
     slug: 'mocky',
     figure: 'wireframe',
     name: 'Mocky',
     kind: 'Wireframe and diagram tool',
-    context: 'DevSamurai, 2021',
-    summary: 'Helps teams on Jira and Confluence sketch screens and flows next to their work.',
+    context: 'DevSamurai, Oct to Dec 2021',
+    summary:
+      'Sold on the Atlassian Marketplace. Helps teams on Jira and Confluence sketch screens and flows next to their work.',
     stat: `Now installed by ${formatCount(marketplace.mockyJira.installs)} organizations on Jira and ${formatCount(marketplace.mockyConfluence.installs)} on Confluence.`,
     lines: [
-      'Built the drawing and flowchart features.',
-      'Kept the canvas fast by controlling what triggers a redraw.',
+      'Built the drawing, design and flowchart features by extending FabricJS components.',
+      'Kept the canvas fast while people draw, by controlling exactly what triggers a redraw.',
     ],
     stack: ['ReactJS', 'FabricJS', 'Redux-Saga'],
     links: [
@@ -252,8 +258,8 @@ export const experience: Role[] = [
     period: 'Oct 2021 to Apr 2026',
     place: 'Ho Chi Minh City',
     lines: [
-      'Owned the screens and service of Product Go, a Jira add-on, for three years.',
-      'Wrote the sign-in and billing side of the platform behind TaskFord and AssetLoom, alone.',
+      'Took over Product Go, a Jira add-on installed by more than 1,900 organizations, and owned its frontend and backend.',
+      'Wrote the sign-in and billing platform behind two SaaS products in production, alone.',
       'Built the drawing and flowchart features of Mocky for Jira and Confluence.',
     ],
   },
@@ -264,7 +270,7 @@ export const experience: Role[] = [
     place: 'Dong Nai City',
     lines: [
       'Built the frontends of two public-sector systems for Dong Nai province, on a team of three.',
-      "Finished the frontend of the culture center's system in six weeks and the youth union's in one month.",
+      "Finished the culture center's frontend in six weeks and the youth union's in one month.",
     ],
   },
 ]
@@ -310,7 +316,7 @@ export const skillGroups: { name: string; items: string[] }[] = [
   { name: 'Native macOS', items: ['Swift', 'SwiftUI', 'SwiftData'] },
   {
     name: 'AI-assisted engineering',
-    items: ['Claude Code', 'Custom commands', 'Reusable skills', 'Test-first with AI'],
+    items: ['Claude Code', 'Custom commands', 'Reusable agent skills', 'Test-first with AI'],
   },
   {
     name: 'Testing and delivery',

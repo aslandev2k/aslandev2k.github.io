@@ -11,6 +11,7 @@ export function Contact({ onCopyEmail }: ContactProps) {
           <span>{profile.location}</span>
         </p>
         <h2>Say hello.</h2>
+        <p className="chapter-summary contact-note">{profile.contactNote}</p>
         <a className="contact-mail" href={`mailto:${profile.email}`}>
           {profile.email}
         </a>

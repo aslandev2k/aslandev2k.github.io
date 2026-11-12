@@ -791,6 +791,11 @@ a {
 
 /* ---------- Contact ---------- */
 
+.contact-note {
+  margin-bottom: 22px;
+  color: var(--ink-soft);
+}
+
 .contact-mail {
   display: inline-block;
   font-family: var(--serif);
