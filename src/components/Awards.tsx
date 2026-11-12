@@ -1,27 +1,31 @@
 import { awards } from '../data/content.ts'
-import { SectionHeading } from './SectionHeading.tsx'
 
 export function Awards() {
   return (
-    <section className="section" id="awards">
-      <SectionHeading
-        index="04"
-        title="Competitive programming"
-        note="Algorithm contests, from high school to ICPC. Linked evidence is in Vietnamese."
-      />
-      <ol className="awards">
-        {awards.map((award) => (
-          <li key={`${award.year}-${award.contest}`}>
-            <span className="award-year">{award.year}</span>
-            <span className="award-title">{award.title}</span>
-            <span className="award-contest">{award.contest}</span>
-            <a href={award.proof.href} target="_blank" rel="noreferrer">
-              {award.proof.label}
-              <span aria-hidden="true"> ↗</span>
-            </a>
-          </li>
-        ))}
-      </ol>
+    <section className="chapter" id="awards" data-figure="medals">
+      <div className="panel">
+        <p className="chapter-meta">
+          <span className="chapter-index">{awards.length}</span>
+          <span>Algorithm contests, 2016 to 2020</span>
+        </p>
+        <h2>Competitive programming</h2>
+        <ol className="awards">
+          {awards.map((award) => (
+            <li className="award" key={`${award.year} ${award.title} ${award.contest}`}>
+              <span className="award-year">{award.year}</span>
+              <strong className="award-title">{award.title}</strong>
+              <span className="award-contest">{award.contest}</span>
+              {award.proof ? (
+                <a className="award-proof" href={award.proof.href} target="_blank" rel="noreferrer">
+                  {award.proof.label}
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+        <p className="fine-print">Linked evidence is in Vietnamese.</p>
+      </div>
     </section>
   )
 }

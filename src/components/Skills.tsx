@@ -1,24 +1,29 @@
 import { skillGroups } from '../data/content.ts'
-import { SectionHeading } from './SectionHeading.tsx'
 
 export function Skills() {
   return (
-    <section className="section" id="skills">
-      <SectionHeading index="03" title="Skills" />
-      <dl className="skills">
-        {skillGroups.map((group) => (
-          <div key={group.name}>
-            <dt>{group.name}</dt>
-            <dd>
-              <ul className="tags">
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-        ))}
-      </dl>
+    <section className="chapter" id="skills" data-figure="spiral">
+      <div className="panel">
+        <p className="chapter-meta">
+          <span className="chapter-index">{skillGroups.length}</span>
+          <span>Groups of tools, from real projects</span>
+        </p>
+        <h2>Skills</h2>
+        <dl className="skills">
+          {skillGroups.map((group) => (
+            <div className="skill-group" key={group.name}>
+              <dt>{group.name}</dt>
+              <dd>
+                <ul className="tags">
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   )
 }
